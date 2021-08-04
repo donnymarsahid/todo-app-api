@@ -1,0 +1,28 @@
+/* Mobile */
+@media (max-width: 575px) {
+  .login-register-todoapp .box h2 {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+  }
+  .login-register-todoapp h2 {
+    font-size: 24px;
+  }
+  .login-register-todoapp h3 {
+    font-size: 14px;
+  }
+  .login-register-todoapp .box {
+    width: 90%;
+    padding: 20px 15px 0 15px;
+  }
+  .login-register-todoapp.register .box {
+    width: 90%;
+    padding: 20px 15px 0 15px;
+  }
+}
+
+/* Mobile TO Tablet */
+@media (min-width: 576px) and (max-width: 767px) {
+  .login-register-todoapp .box {
+    width: 500px;
+  }
+}

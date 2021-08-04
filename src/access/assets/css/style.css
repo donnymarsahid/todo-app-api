@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+:root {
+  --primary: #7c83fd;
+  --gradient: linear-gradient(#7c83fd, #96baff);
+  --font: #3d3d3d;
+}
+
+/* Login-Register Start */
+.login-register-todoapp {
+  background-image: var(--gradient);
+  width: 100%;
+  height: 100vh;
+}
+
+.login-register-todoapp .heading h2,
+.login-register-todoapp .heading h3 {
+  color: white;
+  text-align: center;
+}
+
+.login-register-todoapp h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+.login-register-todoapp h3 {
+  font-size: 20px;
+}
+
+.login-register-todoapp .box {
+  width: 550px;
+  border-radius: 10px;
+  height: 400px;
+  background-color: white;
+  padding: 50px 70px 0 70px;
+}
+
+.login-register-todoapp .box h2 {
+  text-align: center;
+  padding-bottom: 20px;
+  color: var(--primary);
+}
+
+.login-register-todoapp .box input {
+  width: 100%;
+  height: 40px;
+  background-color: #8187fc23;
+  outline: none;
+  border: 1.5px solid var(--primary);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.login-register-todoapp .box button {
+  width: 200px;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+}
+.login-register-todoapp .box button:hover {
+  background-color: #9197fa;
+  color: white;
+}
+
+.login-register-todoapp .box p {
+  color: var(--primary);
+  font-weight: 500;
+}
+.login-register-todoapp p {
+  color: white;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+
+.login-register-todoapp .sosmed i {
+  font-size: 26px;
+  color: #8fb0ff;
+  background-color: white;
+  border-radius: 50px;
+  border: 2px solid white;
+  padding: 7px;
+  margin: 2px 5px;
+}
+
+/* Login-Register End */
+
+/* Register Start */
+.login-register-todoapp .register .box h2 {
+  padding-bottom: 10px;
+}
+.login-register-todoapp input.upload {
+  padding: 4px 10px 0 10px;
+}
+.login-register-todoapp.register input {
+  margin-bottom: 8px;
+}
+.login-register-todoapp.register .box {
+  padding: 30px 70px 0 70px;
+}
+.login-register-todoapp.register button {
+  margin-top: 10px;
+}
+
+.login-register-todoapp.register input.custom-file-input::-webkit-file-upload-button {
+  display: none;
+}
+.login-register-todoapp.register input.custom-file-input::before {
+  content: 'Upload Photo';
+  background-color: transparent;
+  font-weight: 500;
+  color: var(--primary);
+  margin-right: 10px;
+  padding: 2px;
+  border-radius: 3px;
+  border: 1.5px solid var(--primary);
+}
+.login-register-todoapp.register input.custom-file-input {
+  font-size: 14px;
+  padding: 8px 8px;
+}
+
+/* Register End */
+
+/* Step Start */
+.login-register-todoapp .image img {
+  width: 125px;
+  border-radius: 100px;
+}
+.login-register-todoapp .box.step button {
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 10px;
+}
+/* Step End */
