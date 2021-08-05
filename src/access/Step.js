@@ -25,7 +25,9 @@ const Step = (props) => {
           <h2 className="text-capitalize">Hallo, {username}</h2>
           <p class="text-center">SCHEDULE YOUR ACTIVITIES</p>
           <div class="button text-center">
-            <button>SKUYY</button>
+            <Link to="/">
+              <button>SKUYY</button>
+            </Link>
           </div>
           <p className="text-center pt-3">
             go out?
