@@ -1,8 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './assets/css/style.css';
 
 const Step = (props) => {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    return <Redirect to="/login" />;
+  }
   const { username, image } = props.dataUser;
   const IMG_URL = 'http://localhost:3001/';
   return (
@@ -17,7 +22,7 @@ const Step = (props) => {
           <div class="image text-center mb-2">
             <img src={`${IMG_URL}${image}`} alt="profile" />
           </div>
-          <h2>Hallo, {username}</h2>
+          <h2 className="text-capitalize">Hallo, {username}</h2>
           <p class="text-center">SCHEDULE YOUR ACTIVITIES</p>
           <div class="button text-center">
             <button>SKUYY</button>

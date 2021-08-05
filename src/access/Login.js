@@ -47,7 +47,7 @@ const Login = (props) => {
           <div class="box">
             <h2>LOGIN</h2>
             {status && (
-              <div class="alert alert-primary" role="alert">
+              <div class="alert alert-primary text-center" role="alert">
                 {status}
               </div>
             )}
