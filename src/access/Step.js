@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './assets/css/style.css';
-import donny from './assets/donny.jpeg';
 
-const Step = () => {
+const Step = (props) => {
+  const { username, image } = props.dataUser;
+  const IMG_URL = 'http://localhost:3001/';
   return (
     <>
       <title>Todo App</title>
@@ -14,9 +15,9 @@ const Step = () => {
         </div>
         <div class="box step">
           <div class="image text-center mb-2">
-            <img src={donny} alt="photoProfil" />
+            <img src={`${IMG_URL}${image}`} alt="profile" />
           </div>
-          <h2>Hallo, Donny</h2>
+          <h2>Hallo, {username}</h2>
           <p class="text-center">SCHEDULE YOUR ACTIVITIES</p>
           <div class="button text-center">
             <button>SKUYY</button>

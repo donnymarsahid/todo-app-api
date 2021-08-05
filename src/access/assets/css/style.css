@@ -116,18 +116,23 @@ body {
   display: none;
 }
 .login-register-todoapp.register input.custom-file-input::before {
-  content: 'Upload Photo';
+  content: 'Upload';
   background-color: transparent;
   font-weight: 500;
   color: var(--primary);
+  font-size: 13px;
   margin-right: 10px;
-  padding: 2px;
+  padding: 4px;
   border-radius: 3px;
   border: 1.5px solid var(--primary);
 }
 .login-register-todoapp.register input.custom-file-input {
   font-size: 14px;
   padding: 8px 8px;
+}
+
+.login-register-todoapp.register #formRegister.hidden {
+  display: none !important;
 }
 
 /* Register End */
