@@ -3,12 +3,12 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const dataLogin = require('../data/login.json');
+const dataUsers = require('../data/data.json');
 
 router.post('/', (req, res) => {
   const { username, password } = req.body;
 
-  const authentifikasi = dataLogin.find((data) => {
+  const authentifikasi = dataUsers.find((data) => {
     return data.username == username;
   });
 

@@ -6,7 +6,7 @@ const moment = require('moment');
 const fs = require('fs');
 const multer = require('multer');
 
-const dataLogin = require('../data/login.json');
+const dataUsers = require('../data/data.json');
 const { now } = require('moment');
 
 const saltRounds = 10;
@@ -25,7 +25,7 @@ router.post('/', upload.single('image'), (req, res) => {
   const { username, password } = req.body;
   const image = req.file.filename;
   bcrypt.hash(password, saltRounds, (err, password) => {
-    dataLogin.push({
+    dataUsers.push({
       id: uuidv4(),
       username,
       password,
@@ -33,7 +33,7 @@ router.post('/', upload.single('image'), (req, res) => {
       create_at: moment(new Date()).format('LL'),
     });
     res.send({ message: 'success register' });
-    fs.writeFileSync('data/login.json', JSON.stringify(dataLogin));
+    fs.writeFileSync('data/login.json', JSON.stringify(dataUsers));
   });
 });
 
