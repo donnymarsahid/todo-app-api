@@ -19,13 +19,13 @@ router.post('/', (req, res) => {
         const token = jwt.sign({ data }, 'jwtSecretDataTodoForToken', {
           expiresIn: 300,
         });
-        res.json({ token: token });
+        res.json({ token: token, data: authentifikasi });
       } else {
-        res.send('password is wrong');
+        res.send({ message: 'username/password is correct' });
       }
     });
   } else {
-    res.send('username is wrong');
+    res.send({ message: 'username/password is correct' });
   }
 });
 
