@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import './assets/css/style.css';
 import api from '../api/server';
 
-const Login = (props) => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -24,8 +24,8 @@ const Login = (props) => {
             setStatus('');
           }, 3000);
         } else {
-          props.dataUserFunction(res.data.data);
           localStorage.setItem('token', res.data.token);
+          localStorage.setItem('idUser', res.data.data.id);
           setRedirect(true);
         }
       })

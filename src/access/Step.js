@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import './assets/css/style.css';
+import api from '../api/server';
 
-const Step = (props) => {
+const Step = () => {
   const token = localStorage.getItem('token');
+  const [dataUser, setDataUser] = useState([]);
+  const id = localStorage.getItem('idUser');
 
   if (!token) {
     return <Redirect to="/login" />;
   }
-  const { username, image } = props.dataUser;
+  api.get('/todo/' + id).then((res) => {
+    setDataUser(res.data);
+  });
+
   const IMG_URL = 'http://localhost:3001/';
   return (
     <>
@@ -20,9 +26,9 @@ const Step = (props) => {
         </div>
         <div class="box step">
           <div class="image text-center mb-2">
-            <img src={`${IMG_URL}${image}`} alt="profile" />
+            <img src={`${IMG_URL}${dataUser.image}`} alt="profile" />
           </div>
-          <h2 className="text-capitalize">Hallo, {username}</h2>
+          <h2 className="text-capitalize">Hallo, {dataUser.username}</h2>
           <p class="text-center">SCHEDULE YOUR ACTIVITIES</p>
           <div class="button text-center">
             <Link to="/">
