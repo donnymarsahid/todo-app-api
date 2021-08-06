@@ -31,9 +31,10 @@ router.post('/', upload.single('image'), (req, res) => {
       password,
       image,
       create_at: moment(new Date()).format('LL'),
+      activities: [],
     });
     res.send({ message: 'success register' });
-    fs.writeFileSync('data/login.json', JSON.stringify(dataUsers));
+    fs.writeFileSync('data/data.json', JSON.stringify(dataUsers));
   });
 });
 
