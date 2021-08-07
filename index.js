@@ -10,6 +10,7 @@ app.use(express.static('public'));
 const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
 const todoRouter = require('./routes/todoappRouter');
+
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/todo', todoRouter);
