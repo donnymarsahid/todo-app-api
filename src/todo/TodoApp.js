@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import { Redirect } from 'react-router-dom';
 import api from '../api/server';
 import CardsTodo from './cardsTodo/CardsTodo';
+import CardsComplete from './cardsTodo/CardsComplete';
 
 export default class TodoApp extends Component {
   constructor(props) {
@@ -17,6 +18,12 @@ export default class TodoApp extends Component {
       dataUser: [],
     };
   }
+
+  handlerLogout = () => {
+    if (window.confirm('Are You Sure ?')) {
+      localStorage.clear();
+    }
+  };
 
   handlerSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +38,7 @@ export default class TodoApp extends Component {
       .catch((err) => {
         console.log(err);
       });
+    e.target.reset();
   };
 
   componentDidMount() {
@@ -58,18 +66,22 @@ export default class TodoApp extends Component {
 
   render() {
     const token = localStorage.getItem('token');
-    if (!token) {
+    const idUser = localStorage.getItem('idUser');
+    if (!token || !idUser) {
       return <Redirect to="/login" />;
     }
 
     const cardsTodo = this.state.dataUser.map((data) => {
       return <CardsTodo todo={data} />;
     });
-
+    const cardsComplete = this.state.dataUser.map((data, index) => {
+      return <CardsComplete todo={data} index={index} />;
+    });
     return (
       <>
         <title>Todo App</title>
         <Navbar image={this.state.image} />
+
         <main>
           <div class="container">
             <div class="results">
@@ -85,7 +97,7 @@ export default class TodoApp extends Component {
                   <input
                     type="text"
                     name="activity"
-                    placeholder="Playing Mobile Legend ..."
+                    placeholder="Ngoding Santuyy ..."
                     id="activities"
                     required
                     onChange={(e) => {
@@ -109,7 +121,7 @@ export default class TodoApp extends Component {
                     id="date"
                     required
                     onChange={(e) => {
-                      this.setState({ date: e.target.value });
+                      this.setState({ time: e.target.value });
                     }}
                   />
                   <br />
@@ -120,19 +132,16 @@ export default class TodoApp extends Component {
             <div class="history">
               <div class="box">
                 <h2>History Complete</h2>
-                <div class="activity">
-                  <div class="learning-done d-flex justify-content-lg-between">
-                    <p class="m-0">Learning</p>
-                    <i class="fas fa-trash-alt"></i>
-                  </div>
-                  <div class="schedule-edit d-flex justify-content-lg-between mt-1">
-                    <p class="m-0">Done ! at 15:00 AM</p>
-                  </div>
-                </div>
+                {cardsComplete}
               </div>
             </div>
           </div>
         </main>
+        <div className="d-flex justify-content-center m-2">
+          <button className="btn btn-primary" onClick={this.handlerLogout}>
+            Logout ?
+          </button>
+        </div>
         <Footer />
       </>
     );

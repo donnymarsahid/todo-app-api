@@ -54,12 +54,16 @@ main .container {
   grid-template-areas:
     'results input'
     'results history';
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1.3fr 1fr;
   grid-template-columns: 1fr 1fr;
 }
 
 main .container .results {
   grid-area: results;
+}
+
+main .container .results .box {
+  overflow-y: scroll;
 }
 main .container .input-todo {
   grid-area: input;
@@ -71,7 +75,7 @@ main .container .history {
 main .results,
 main .input-todo,
 main .history {
-  padding: 30px;
+  padding: 20px;
 }
 
 main .box {
@@ -173,6 +177,25 @@ main .input-todo button:hover {
   background: #898fff;
 }
 /* Input Todo End */
+
+/* Modal Box Update Start */
+.modal-body input {
+  width: 100%;
+  margin-bottom: 8px;
+  border: 1.5px solid var(--primary);
+  border-radius: 5px;
+  outline: none;
+}
+
+.modal-body button#save-change {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  border: none;
+  padding: 5px 8px;
+}
+/* Modal Box Update End */
 
 /* Footer Start */
 footer {
