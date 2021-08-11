@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import NoMatch from './404/NoMatch';
 import Login from './access/Login';
 import Register from './access/Register';
 import Step from './access/Step';
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/register" component={Register} />
           <Route path="/step" component={Step} />
           <Route path="/" component={TodoApp} />
+          <Route path="/*" component={NoMatch} />
         </Switch>
       </Router>
     </>
