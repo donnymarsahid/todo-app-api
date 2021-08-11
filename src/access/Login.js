@@ -89,9 +89,15 @@ const Login = () => {
           </div>
           <p className="m-0">Dont forget follow donny :)</p>
           <div class="sosmed">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-dribbble"></i>
+            <a href="http://instagram.com/donnymrshd">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/donymarsahid">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://dribbble.com/donnymrshd">
+              <i class="fab fa-dribbble"></i>
+            </a>
           </div>
         </div>
       </Fragment>
