@@ -89,13 +89,13 @@ const Login = () => {
           </div>
           <p className="m-0">Dont forget follow donny :)</p>
           <div class="sosmed">
-            <a href="http://instagram.com/donnymrshd">
+            <a href="http://instagram.com/donnymrshd" class="text-decoration-none">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.facebook.com/donymarsahid">
+            <a href="https://www.facebook.com/donymarsahid" class="text-decoration-none">
               <i class="fab fa-facebook"></i>
             </a>
-            <a href="https://dribbble.com/donnymrshd">
+            <a href="https://dribbble.com/donnymrshd" class="text-decoration-none">
               <i class="fab fa-dribbble"></i>
             </a>
           </div>
