@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Navbar = ({ image }) => {
-  const IMG_URL = 'http://localhost:3001/';
+  const IMG_URL = 'https://todo-app-portfolio-donny.herokuapp.com/';
   return (
     <>
       <nav class=" d-flex align-items-center shadow-sm">

@@ -15,7 +15,7 @@ const Step = () => {
     setDataUser(res.data);
   });
 
-  const IMG_URL = 'http://localhost:3001/';
+  const IMG_URL = 'https://todo-app-portfolio-donny.herokuapp.com/';
   return (
     <>
       <title>Todo App</title>
