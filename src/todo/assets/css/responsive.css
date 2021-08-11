@@ -1,0 +1,129 @@
+/* Mobile Small */
+@media (max-width: 375px) {
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  main {
+    height: 1500px;
+  }
+  main .container {
+    height: 100%;
+    display: grid;
+    grid-template-areas:
+      'input input'
+      'results results'
+      'history history';
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+  }
+  .container .results,
+  .container .history {
+    height: 500px;
+  }
+  * p {
+    font-size: 12px !important;
+  }
+  nav h3 {
+    font-size: 14px;
+  }
+  html body .container {
+    width: 90% !important;
+    padding: 0;
+  }
+  nav .logo {
+    width: 50%;
+  }
+  nav .logo h2 {
+    font-weight: 600;
+  }
+  \ .container h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  .container .input-todo,
+  .container .results,
+  .container .history {
+    padding: 10px 0 0 8px;
+  }
+  nav .tagline {
+    display: none !important;
+  }
+  .container button {
+    font-size: 12px;
+    padding: 4px;
+  }
+  .container input {
+    height: 30px !important;
+    font-size: 14px !important;
+    width: 100% !important;
+  }
+  .container p {
+    font-size: 14px;
+  }
+}
+
+/* Mobile to tablet */
+@media (min-width: 576px) and (max-width: 767px) {
+  * p {
+    font-size: 12px !important;
+  }
+  nav h3 {
+    font-size: 14px;
+  }
+  html body .container {
+    width: 100% !important;
+    padding: 0;
+  }
+  .container h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  .container .input-todo,
+  .container .results,
+  .container .history {
+    padding: 10px 0 0 8px;
+  }
+  nav h3.m-0 {
+    visibility: hidden;
+  }
+  .container button {
+    font-size: 12px;
+    padding: 4px;
+  }
+  .container input {
+    height: 30px !important;
+    font-size: 14px !important;
+    width: 100% !important;
+  }
+  .container p {
+    font-size: 14px;
+  }
+}
+
+/*  Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  nav h3 {
+    font-size: 14px;
+  }
+  .container h2 {
+    font-size: 20px;
+    margin: 0;
+  }
+  .container button {
+    font-size: 14px;
+    padding: 4px;
+  }
+  .container input {
+    height: 30px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* Desktop Small */
+@media (min-width: 992px) and (max-width: 1999px) {
+}
+
+/* Desktop etc */
+@media (min-width: 1200px) {
+}

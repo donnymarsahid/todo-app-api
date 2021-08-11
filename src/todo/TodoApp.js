@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Navbar from './components/Navbar';
 import './assets/css/style.css';
+import './assets/css/responsive.css';
 import Footer from './components/Footer';
 import { Redirect } from 'react-router-dom';
 import api from '../api/server';
@@ -15,6 +16,7 @@ export default class TodoApp extends Component {
       date: '',
       time: '',
       image: '',
+      status: '',
       dataUser: [],
     };
   }
@@ -33,7 +35,13 @@ export default class TodoApp extends Component {
       .then((res) => {
         this.setState({
           activities: res.data.activities,
+          status: 'success add todo',
         });
+        setInterval(() => {
+          this.setState({
+            status: '',
+          });
+        }, 5000);
       })
       .catch((err) => {
         console.log(err);
@@ -79,70 +87,78 @@ export default class TodoApp extends Component {
     });
     return (
       <>
-        <title>Todo App</title>
-        <Navbar image={this.state.image} />
-
-        <main>
-          <div class="container">
-            <div class="results">
-              <div class="box">
-                <h2>Your Activity Today</h2>
-                {cardsTodo}
+        <Fragment>
+          <title>Todo App</title>
+          <Navbar image={this.state.image} />
+          <main>
+            <div class="container">
+              <div class="results">
+                <div class="box">
+                  <h2>Your Activity Today</h2>
+                  {cardsTodo}
+                </div>
+              </div>
+              <div class="input-todo">
+                <div class="box">
+                  <h2>Enter your activity here</h2>
+                  <div class="status-mobile">
+                    {this.state.status && (
+                      <div class="alert alert-primary" role="alert">
+                        {this.state.status}
+                      </div>
+                    )}
+                  </div>
+                  <form onSubmit={this.handlerSubmit}>
+                    <input
+                      type="text"
+                      name="activity"
+                      placeholder="Learning"
+                      id="activities"
+                      required
+                      onChange={(e) => {
+                        this.setState({ activity: e.target.value });
+                      }}
+                    />
+                    <br />
+                    <input
+                      type="date"
+                      name="date"
+                      id="date"
+                      required
+                      onChange={(e) => {
+                        this.setState({ date: e.target.value });
+                      }}
+                    />
+                    <br />
+                    <input
+                      type="time"
+                      name="time"
+                      id="date"
+                      required
+                      onChange={(e) => {
+                        this.setState({ time: e.target.value });
+                      }}
+                    />
+                    <br />
+                    <button type="submit">ADD ACTIVITY</button>
+                  </form>
+                </div>
+              </div>
+              <div class="history">
+                <div class="box">
+                  <h2>History Complete</h2>
+                  {cardsComplete}
+                </div>
               </div>
             </div>
-            <div class="input-todo">
-              <div class="box">
-                <h2>Enter your activity here</h2>
-                <form onSubmit={this.handlerSubmit}>
-                  <input
-                    type="text"
-                    name="activity"
-                    placeholder="Ngoding Santuyy ..."
-                    id="activities"
-                    required
-                    onChange={(e) => {
-                      this.setState({ activity: e.target.value });
-                    }}
-                  />
-                  <br />
-                  <input
-                    type="date"
-                    name="date"
-                    id="date"
-                    required
-                    onChange={(e) => {
-                      this.setState({ date: e.target.value });
-                    }}
-                  />
-                  <br />
-                  <input
-                    type="time"
-                    name="time"
-                    id="date"
-                    required
-                    onChange={(e) => {
-                      this.setState({ time: e.target.value });
-                    }}
-                  />
-                  <br />
-                  <button type="submit">ADD ACTIVITY</button>
-                </form>
-              </div>
-            </div>
-            <div class="history">
-              <div class="box">
-                <h2>History Complete</h2>
-                {cardsComplete}
-              </div>
-            </div>
+          </main>
+          <div className="d-flex justify-content-center m-2">
+            <button className="btn btn-primary" onClick={this.handlerLogout}>
+              Logout ?
+            </button>
           </div>
-        </main>
-        <div className="d-flex justify-content-center m-2">
-          <button className="btn btn-primary" onClick={this.handlerLogout}>
-            Logout ?
-          </button>
-        </div>
-        <Footer />
+          <Footer />
+        </Fragment>
       </>
     );
   }

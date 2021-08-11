@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import api from '../../api/server';
 import moment from 'moment';
 
@@ -6,6 +6,8 @@ const CardsTodo = ({ todo }) => {
   const [editActivity, setEditActivity] = useState('');
   const [editDate, setEditDate] = useState('');
   const [editTime, setEditTime] = useState('');
+
+  const [statusUpdate, setStatusUpdate] = useState('');
 
   const handlerDone = () => {
     const id = localStorage.getItem('idUser');
@@ -17,6 +19,7 @@ const CardsTodo = ({ todo }) => {
       .catch((err) => {
         console.log(err);
       });
+    alert('activity completed check history');
   };
 
   if (todo.complete !== '') {
@@ -34,7 +37,10 @@ const CardsTodo = ({ todo }) => {
         time: editTime,
       })
       .then((res) => {
-        console.log(res);
+        setStatusUpdate(res.data.message);
+        setTimeout(() => {
+          setStatusUpdate('');
+        }, 10000);
       })
       .catch((err) => {
         console.log(err);
@@ -44,73 +50,83 @@ const CardsTodo = ({ todo }) => {
   const dateTodo = moment(todo.date).format('ll');
   return (
     <>
-      <div class="activity mb-2 ">
-        <div class="learning-done d-flex justify-content-lg-between">
-          <p class="m-0">{todo.activity}</p>
-          <button onClick={handlerDone}>DONE</button>
+      <Fragment>
+        <div class="activity mb-2 ">
+          <div class="learning-done d-flex justify-content-between">
+            <p class="m-0">{todo.activity}</p>
+            <button onClick={handlerDone}>DONE</button>
+          </div>
+          <div class="schedule-edit d-flex justify-content-between mt-1">
+            <p class="m-0">
+              schedule at {dateTodo}, {todo.time}
+            </p>
+            <i class="fas fa-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+          </div>
         </div>
-        <div class="schedule-edit d-flex justify-content-lg-between mt-1">
-          <p class="m-0">
-            schedule at {dateTodo}, {todo.time}
-          </p>
-          <i class="fas fa-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-        </div>
-      </div>
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Edit Activity
-              </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form onSubmit={handlerUpdateTodo}>
-                <input
-                  type="text"
-                  name="activity"
-                  id="activities"
-                  required
-                  placeholder={todo.activity}
-                  onChange={(e) => {
-                    setEditActivity(e.target.value);
-                  }}
-                />
-                <br />
-                <input
-                  type="date"
-                  name="date"
-                  id="date"
-                  required
-                  onChange={(e) => {
-                    setEditDate(e.target.value);
-                  }}
-                />
-                <br />
-                <input
-                  type="time"
-                  name="time"
-                  id="date"
-                  required
-                  onChange={(e) => {
-                    setEditTime(e.target.value);
-                  }}
-                />
-                <br />
-                <button type="submit" id="save-change">
-                  Save Change
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Edit Activity
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              {statusUpdate && (
+                <div class="alert alert-primary d-flex" role="alert">
+                  {statusUpdate}
+                  <p class="text-decoration-underline" data-bs-dismiss="modal" style={{ cursor: 'pointer' }}>
+                    Back
+                  </p>
+                </div>
+              )}
+              <div class="modal-body">
+                <form onSubmit={handlerUpdateTodo}>
+                  <input
+                    type="text"
+                    name="activity"
+                    id="activities"
+                    required
+                    placeholder={todo.activity}
+                    onChange={(e) => {
+                      setEditActivity(e.target.value);
+                    }}
+                  />
+                  <br />
+                  <input
+                    type="date"
+                    name="date"
+                    id="date"
+                    required
+                    onChange={(e) => {
+                      setEditDate(e.target.value);
+                    }}
+                  />
+                  <br />
+                  <input
+                    type="time"
+                    name="time"
+                    id="date"
+                    required
+                    onChange={(e) => {
+                      setEditTime(e.target.value);
+                    }}
+                  />
+                  <br />
+                  <button type="submit" id="save-change">
+                    Save Change
+                  </button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Close
                 </button>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                Close
-              </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     </>
   );
 };
