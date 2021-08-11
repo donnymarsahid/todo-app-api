@@ -109,6 +109,9 @@ export default class TodoApp extends Component {
                     )}
                   </div>
                   <form onSubmit={this.handlerSubmit}>
+                    <label for="activities" class="mb-1 text-mobile fw-bold text-white">
+                      Activity :
+                    </label>
                     <input
                       type="text"
                       name="activity"
@@ -120,6 +123,10 @@ export default class TodoApp extends Component {
                       }}
                     />
                     <br />
+                    <label for="date" class="mb-1 text-mobile fw-bold text-white">
+                      Date :
+                    </label>
+                    <br />
                     <input
                       type="date"
                       name="date"
@@ -129,6 +136,10 @@ export default class TodoApp extends Component {
                         this.setState({ date: e.target.value });
                       }}
                     />
+                    <br />
+                    <label for="time" class="mb-1 text-mobile fw-bold text-white">
+                      Time :
+                    </label>
                     <br />
                     <input
                       type="time"

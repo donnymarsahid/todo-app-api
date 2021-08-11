@@ -87,7 +87,7 @@ const CardsTodo = ({ todo }) => {
                     name="activity"
                     id="activities"
                     required
-                    placeholder={todo.activity}
+                    placeholder="change todo"
                     onChange={(e) => {
                       setEditActivity(e.target.value);
                     }}
