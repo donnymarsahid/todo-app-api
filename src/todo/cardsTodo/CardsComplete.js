@@ -20,7 +20,7 @@ const CardsComplete = ({ todo, index }) => {
 
   return (
     <>
-      <div class={`activity`}>
+      <div class="activity mb-2">
         <div class="learning-done d-flex justify-content-between">
           <p class="m-0">{todo.activity}</p>
           <i class="fas fa-trash-alt" onClick={deleteTodoActivity}></i>
