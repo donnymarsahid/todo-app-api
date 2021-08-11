@@ -92,7 +92,7 @@ router.put('/update/:idUser', (req, res) => {
   if (time) {
     findUserActivity.time = time;
   }
-  res.send({ message: 'success update todo' });
+  res.send({ message: 'success update todo ' });
 });
 
 module.exports = router;
