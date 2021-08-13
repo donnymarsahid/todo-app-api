@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 import api from '../api/server';
 import CardsTodo from './cardsTodo/CardsTodo';
 import CardsComplete from './cardsTodo/CardsComplete';
+import swal from 'sweetalert';
 
 export default class TodoApp extends Component {
   constructor(props) {
@@ -16,7 +17,6 @@ export default class TodoApp extends Component {
       date: '',
       time: '',
       image: '',
-      status: '',
       dataUser: [],
     };
   }
@@ -29,13 +29,13 @@ export default class TodoApp extends Component {
 
   handlerSubmit = (e) => {
     e.preventDefault();
+    swal('activity added successfully');
     const id = localStorage.getItem('idUser');
     api
       .post('todo/' + id, this.state)
       .then((res) => {
         this.setState({
           activities: res.data.activities,
-          status: 'success add todo',
         });
         setInterval(() => {
           this.setState({
@@ -101,13 +101,7 @@ export default class TodoApp extends Component {
               <div class="input-todo">
                 <div class="box">
                   <h2>Enter your activity here</h2>
-                  <div class="status-mobile">
-                    {this.state.status && (
-                      <div class="alert alert-primary" role="alert">
-                        {this.state.status}
-                      </div>
-                    )}
-                  </div>
+                  <div class="status-mobile"></div>
                   <form onSubmit={this.handlerSubmit}>
                     <label for="activities" class="mb-1 text-mobile fw-bold text-white">
                       Activity :

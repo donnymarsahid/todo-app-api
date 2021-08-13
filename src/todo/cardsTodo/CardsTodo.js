@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/server';
 import moment from 'moment';
+import swal from 'sweetalert';
 
 const CardsTodo = ({ todo }) => {
   const [editActivity, setEditActivity] = useState('');
@@ -10,7 +11,14 @@ const CardsTodo = ({ todo }) => {
   const [statusUpdate, setStatusUpdate] = useState('');
 
   const handlerDone = () => {
+    swal({
+      title: 'Good job! activity completed',
+      text: 'check activity history',
+      icon: 'success',
+      button: 'Okrayy',
+    });
     const id = localStorage.getItem('idUser');
+
     api
       .put('todo/complete/' + id, { activity: todo.activity })
       .then((res) => {
@@ -19,7 +27,6 @@ const CardsTodo = ({ todo }) => {
       .catch((err) => {
         console.log(err);
       });
-    alert('activity completed check history');
   };
 
   if (todo.complete !== '') {
@@ -60,10 +67,10 @@ const CardsTodo = ({ todo }) => {
             <p class="m-0">
               schedule at {dateTodo}, {todo.time}
             </p>
-            <i class="fas fa-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+            <i class="fas fa-edit" data-bs-toggle="modal" data-bs-target={`#exampleModal${todo.id}`}></i>
           </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id={`exampleModal${todo.id}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -87,7 +94,7 @@ const CardsTodo = ({ todo }) => {
                     name="activity"
                     id="activities"
                     required
-                    placeholder="change todo"
+                    defaultValue={todo.activity}
                     onChange={(e) => {
                       setEditActivity(e.target.value);
                     }}
@@ -98,6 +105,7 @@ const CardsTodo = ({ todo }) => {
                     name="date"
                     id="date"
                     required
+                    defaultValue={todo.date}
                     onChange={(e) => {
                       setEditDate(e.target.value);
                     }}
@@ -108,6 +116,7 @@ const CardsTodo = ({ todo }) => {
                     name="time"
                     id="date"
                     required
+                    defaultValue={todo.time}
                     onChange={(e) => {
                       setEditTime(e.target.value);
                     }}

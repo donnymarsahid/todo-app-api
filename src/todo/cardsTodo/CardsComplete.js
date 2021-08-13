@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../../api/server';
+import swal from 'sweetalert';
 
 const CardsComplete = ({ todo, index }) => {
   if (todo.complete === '') {
@@ -7,15 +8,24 @@ const CardsComplete = ({ todo, index }) => {
   }
   const deleteTodoActivity = () => {
     const idUser = localStorage.getItem('idUser');
-    api
-      .delete(`/todo/delete/${idUser}`, { indexUserActivity: index })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    alert('todo has been deleted');
+    swal({
+      title: 'Are you sure?',
+      buttons: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        api
+          .delete(`/todo/delete/${idUser}`, { indexUserActivity: index })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        swal('your activity has been deleted');
+      } else {
+        swal('history activity is save');
+      }
+    });
   };
 
   return (
