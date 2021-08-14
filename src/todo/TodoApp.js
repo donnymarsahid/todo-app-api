@@ -94,7 +94,7 @@ export default class TodoApp extends Component {
             <div class="container">
               <div class="results">
                 <div class="box">
-                  <h2>Your Activity Today</h2>
+                  <h2>Your Activity</h2>
                   {cardsTodo}
                 </div>
               </div>
