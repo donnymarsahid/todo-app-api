@@ -1,5 +1,5 @@
 [
-  { "id": "5197bfea-9f34-4bca-ab44-bd281f1bdc0f", "username": "donny", "password": "$2b$10$tKrkgnDBoU4bMo0OGGdmie1wmVX8qWXFg54oeAosFOzkruW2Mma3K", "image": "1628145440554--donny.jpg", "create_at": "August 5, 2021", "activities": [] },
+  { "id": "5197bfea-9f34-4bca-ab44-bd281f1bdc0f", "username": "donny", "password": "thisispassword", "image": "1628145440554--donny.jpg", "create_at": "August 5, 2021", "activities": [] },
   {
     "id": "390932dd-d8ff-4c96-a64d-ff513fa4db3e",
     "username": "Ansel",
