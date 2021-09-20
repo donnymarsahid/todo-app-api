@@ -10,26 +10,27 @@ const dataUsers = require('../data/data.json');
 const { now } = require('moment');
 
 const saltRounds = 10;
-const uploadFile = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public');
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '--' + file.originalname);
-  },
-});
+// const uploadFile = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'public');
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + '--' + file.originalname);
+//   },
+// });
 
-const upload = multer({ storage: uploadFile });
+// const upload = multer({ storage: uploadFile });
 
-router.post('/', upload.single('image'), (req, res) => {
+// router.post('/', upload.single('image'), (req, res) => {
+router.post('/', (req, res) => {
   const { username, password } = req.body;
-  const image = req.file.filename;
+  // const image = req.file.filename;
   bcrypt.hash(password, saltRounds, (err, password) => {
     dataUsers.push({
       id: uuidv4(),
       username,
       password,
-      image,
+      // image,
       create_at: moment(new Date()).format('LL'),
       activities: [],
     });
